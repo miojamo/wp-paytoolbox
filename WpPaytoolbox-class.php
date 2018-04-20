@@ -31,7 +31,7 @@ class WpPaytoolbox{
 	}
 
 	public function doListCategories(){
-		$category = @$_GET['view'];
+		$category = @$_GET['category'];
 		$product  = @$_GET['product'];
 
 		if( !empty($category))     $this->printCategoryProducts($category);
@@ -42,15 +42,48 @@ class WpPaytoolbox{
 	private function printProduct($product){
 
 		// This is used by function ..._get_category()
-		$GLOBALS['wpptb-product'] = $this->getDataFromEndpoint("/products/".$product . '?channel=' . $this->channel);
-		
-		$this->showPage('product');
+		$product = $this->getDataFromEndpoint("/products/".$product . '?channel=' . $this->channel);
 
+		$price = "-";
+		$currency = "";
+		$thumb = "";
+
+		//if( isset($product['variants']->{$product['code']}->price)){
+		// Don't use isset() so we see if an error occured!
+			$price = $product['variants']->{$product['code']}->price->current;
+			$currency = $product['variants']->{$product['code']}->price->currency;
+		//}
+
+
+		if( ! empty($product['images'])){
+			$img1 = current($product['images']);
+			$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $img1->path;
+		}
+
+		$product['price'] = $price;
+		$product['currency'] = $currency;
+		$product['thumb'] = $thumb;
+		
+
+
+		$GLOBALS['wpptb-product'] = $product;
+		$this->showPage('product');
 	}
 
 	private function printCategoryProducts($category){
 
 		$prods = $this->getDataFromEndpoint("/taxon-products/".$category . '?channel=' . $this->channel);
+// print_r($prods['items']);
+
+		foreach ($prods['items'] as & $row) {
+
+			$first_img = current($row->images);
+			$row->thumb = "";
+			if( ! empty($first_img)){
+				$row->thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $first_img->path; 
+			}
+		}
+
 		$GLOBALS['wpptb-category-products'] = $prods['items']; // This is used by function ..._get_category()
 
 		$this->showPage('category-products');
@@ -77,14 +110,19 @@ class WpPaytoolbox{
 		include file_exists($theme_file) ? $theme_file : $default_file;
 	}
 
-	private function mapMultiDimensionalToSimpleArray($cats){
+	private function mapMultiDimensionalToSimpleArray($categories){
+
 		$out = [];
-		foreach ($cats as $row) {
-			$out[] = [
-				'name' => $row->name,
-				'slug' => $row->slug,
-				'code' => $row->code,
-			];
+
+		foreach ($categories as $row) {
+
+			$thumb = '';
+			if(count($row->images) > 0){
+				$thumb = current($row->images);
+				$thumb = WPPTB_BASE_URL . '/media/cache/sylius_small/' . $thumb->path;
+			}
+			$row->thumb = $thumb;
+			$out[] = $row;
 
 			if(! empty($row->children)){
 				$out = array_merge($out, $this->mapMultiDimensionalToSimpleArray($row->children) );

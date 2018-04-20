@@ -15,8 +15,8 @@ include 'vendor/autoload.php';
 
 define("WPPTB_BASE_URL", "https://demo.paytoolbox.com");
 define("WPPTB_API_URL", WPPTB_BASE_URL. "/shop-api");
-define('WPPTB_API_USERNAME', 'boris.trivic@yandex.ru');
-define('WPPTB_API_PASSWORD', 'boris');
+define('WPPTB_API_USERNAME', 'test@paytoolbox.com');
+define('WPPTB_API_PASSWORD', 'test');
 
 
 function wppaytoolbox_init(){
