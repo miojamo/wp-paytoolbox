@@ -1,0 +1,8 @@
+.wpptb .category-box{
+	display: inline-block;
+    width: 150px;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid silver;
+    text-align: center;
+}
