@@ -26,9 +26,11 @@
 	</div>
 
 	<div class="wpptb-btn-container">
-		<a href="<?=WPPTB_BASE_URL?>/products/<?=$prod['slug']?>" class="wpptb-btn">
+
+		<a href="<?php echo $prod['quicksell']->checkout ?>" class="wpptb-btn">
 			<?php _e('Buy', 'wppaytoolbox')?>
 		</a>
+	
 	</div>
 
 </div>
