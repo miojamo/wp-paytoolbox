@@ -22,7 +22,7 @@ class WpPaytoolbox{
 	**/
 	public function init(){
 
-		add_shortcode("wpptb-categories", array($this, 'doListCategories'));
+		add_shortcode("wpptb-shop", array($this, 'doListCategories'));
 
     	wp_enqueue_style( 'wpptb-style', plugins_url('style.css', __FILE__)  );
 
