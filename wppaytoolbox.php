@@ -10,6 +10,8 @@
   */
 session_start();
 include 'WpPaytoolbox-class.php';
+include 'models/WpptbProduct.php';
+include 'models/WpptbCategory.php';
 include 'vendor/autoload.php';
 
 

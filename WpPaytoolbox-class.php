@@ -42,7 +42,9 @@ class WpPaytoolbox{
 	private function printProduct($product){
 
 		// This is used by function ..._get_category()
-		$product = $this->getDataFromEndpoint("/products/".$product . '?channel=' . $this->channel);
+		$api_product = $this->getDataFromEndpoint("/products/".$product . '?channel=' . $this->channel);
+
+		$Product = new WpptbProduct();
 
 		$price = "-";
 		$currency = "";
@@ -50,23 +52,25 @@ class WpPaytoolbox{
 
 		//if( isset($product['variants']->{$product['code']}->price)){
 		// Don't use isset() so we see if an error occured!
-			$price = $product['variants']->{$product['code']}->price->current;
-			$currency = $product['variants']->{$product['code']}->price->currency;
+			$price = $api_product['variants']->{$api_product['code']}->price->current;
+			$currency = $api_product['variants']->{$api_product['code']}->price->currency;
 		//}
 
 
-		if( ! empty($product['images'])){
-			$img1 = current($product['images']);
+		if( ! empty($api_product['images'])){
+			$img1 = current($api_product['images']);
 			$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $img1->path;
 		}
 
-		$product['price'] = $price;
-		$product['currency'] = $currency;
-		$product['thumb'] = $thumb;
-		
+		$Product->setName($api_product['name']);
+		$Product->setCurrency($currency);
+		$Product->setPrice($price);
+		$Product->setThumb($thumb);
+		$Product->setDescription($api_product['description']);
+		$Product->setImages($api_product['images']);
+		$Product->setQuicksellUrl($api_product['quicksell']->checkout);
 
-
-		$GLOBALS['wpptb-product'] = $product;
+		$GLOBALS['wpptb-product'] = $Product;
 		$this->showPage('product');
 	}
 
@@ -75,16 +79,26 @@ class WpPaytoolbox{
 		$prods = $this->getDataFromEndpoint("/taxon-products/".$category . '?channel=' . $this->channel);
 // print_r($prods['items']);
 
-		foreach ($prods['items'] as & $row) {
+		$products = array();
+
+		foreach ($prods['items'] as $row) {
 
 			$first_img = current($row->images);
-			$row->thumb = "";
+			$thumb = "";
 			if( ! empty($first_img)){
-				$row->thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $first_img->path; 
+				$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $first_img->path; 
 			}
+
+			$Product = new WpptbProduct();
+			$Product->setName($row->name);
+			$Product->setCode($row->code);
+			$Product->setThumb($thumb);
+
+			$products[] = $Product;
+
 		}
 
-		$GLOBALS['wpptb-category-products'] = $prods['items']; // This is used by function ..._get_category()
+		$GLOBALS['wpptb-category-products'] = $products; // This is used by function ..._get_category()
 
 		$this->showPage('category-products');
 
@@ -92,10 +106,24 @@ class WpPaytoolbox{
 
 	private function printAllCategories(){
 
-		$categories = $this->getDataFromEndpoint("/taxons");
+		$api_categories = $this->getDataFromEndpoint("/taxons");
+		// Multidimens. array to simple
+		$api_categories = $this->mapMultiDimensionalToSimpleArray($api_categories);
+
+		$categories = array();
+
+		foreach ($api_categories as $row) {
+			$Category = new WpptbCategory();
+			$Category->setName($row->name);
+			$Category->setCode($row->code);
+			$Category->setThumb($row->thumb);
+
+			$categories[] = $Category;
+		}
+
 
 		// This is used by function *get_all_categories()
-		$GLOBALS['wpptb-all-categories'] = $this->mapMultiDimensionalToSimpleArray($categories); 
+		$GLOBALS['wpptb-all-categories'] = $categories; 
 		
 		$this->showPage('categories');
 

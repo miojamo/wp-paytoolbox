@@ -3,23 +3,23 @@
 
 <div class="wpptb">
 
-	<h2><?php echo $prod['name']?></h2>
+	<h2><?php echo $prod->getName()?></h2>
 	
 	<div class="price">
-		<?php echo $prod['currency']?> <?php echo number_format( $prod['price'] , 2)?>
+		<?php echo $prod->getCurrency()?> <?php echo number_format( $prod->getPrice() , 2)?>
 		<hr />
 	</div>
 	
 	<div class="desc">
-		<?php if( $prod['thumb']){ ?>
-			<img src="<?php echo $prod['thumb']?>" class="product-thumb" />
+		<?php if( $prod->getThumb()){ ?>
+			<img src="<?php echo $prod->getThumb()?>" class="product-thumb" />
 		<?php } ?>
-		<?php echo $prod['description']?>
+		<?php echo $prod->getDescription()?>
 	</div>
 
 	<div class="images">
 
-		<?php foreach ($prod['images'] as $img) { ?>
+		<?php foreach ($prod->getImages() as $img) { ?>
 			<p><img src="<?=WPPTB_BASE_URL?>/media/cache/product_medium/<?php echo $img->path?>"></p>
 		<?php } ?>
 
@@ -27,7 +27,7 @@
 
 	<div class="wpptb-btn-container">
 
-		<a href="<?php echo $prod['quicksell']->checkout ?>" class="wpptb-btn">
+		<a href="<?php echo $prod->getQuicksellUrl() ?>" class="wpptb-btn">
 			<?php _e('Buy', 'wppaytoolbox')?>
 		</a>
 	
