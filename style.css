@@ -1,46 +1,9 @@
-.wpptb .list-box{
-	display: block;
-    padding: 10px;
-    border-bottom: 1px solid silver;
+.uk-card .uk-card-title {
+	font-size: 2rem
 }
 
-.wpptb .list-box .thumb{
-	display: block;
-	float: left;
-	max-width: 150px;
-	width: 25%;
-}
-.wpptb .list-box .thumb img{ border: 1px solid #ccc; }
-
-.wpptb .list-box .list-name{
-	display: block;
-	float: left;
-	min-width: 200px;
-	width: 70%;
-	padding-left: 10px;
+.uk-card-default {
+	box-shadow: 0 1px 6px 0 rgba(0,0,0,0.05);
+	border-radius: 5px;
 }
 
-.wpptb .product-thumb{ 
-	float: right;
-	max-width: 250px;
-	max-height: 400px;
-	margin-right: 7px;
-}
-
-.wpptb-btn-container .wpptb-btn{ 
-	padding: 15px 25px;
-	font-size: 20px;
-	text-transform: uppercase;
-	border: 1px solid #333;
-	/*border-radius: 10px;*/
-	text-decoration: none;
-	background-color: #4184f3; 
-	color: #eee;
-}
-.wpptb-btn-container .wpptb-btn:hover{
-	background-color: #1f72fc;
-	color: #fff;
-}
-
-.wpptb-btn-container .wpptb-btn
-, .wpptb-btn-container .wpptb-btn:hover{ box-shadow: none; -webkit-box-shadow: none; }

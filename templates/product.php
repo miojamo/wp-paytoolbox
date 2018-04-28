@@ -1,36 +1,41 @@
-
 <?php $prod = wppaytoolbox_get_product(); // var_dump($prod); ?>
 
 <div class="wpptb">
 
-	<h2><?php echo $prod->getName()?></h2>
-	
-	<div class="price">
-		<?php echo $prod->getCurrency()?> <?php echo number_format( $prod->getPrice() , 2)?>
-		<hr />
-	</div>
-	
-	<div class="desc">
-		<?php if( $prod->getThumb()){ ?>
-			<img src="<?php echo $prod->getThumb()?>" class="product-thumb" />
-		<?php } ?>
-		<?php echo $prod->getDescription()?>
-	</div>
+    <div class="uk-card">
+        <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
+            <div>
+                <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
+                    <ul class="uk-slideshow-items">
+						<?php foreach ($prod->getImages() as $img): ?>
+                            <li><img src="<?= WPPTB_BASE_URL ?>/media/cache/product_medium/<?php echo $img->path ?>" uk-cover></li>
+						<?php endforeach; ?>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 
-	<div class="images">
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="uk-card">
+                    <h2 class="uk-margin-remove-top"><?php echo $prod->getName() ?></h2>
+                    <hr/>
+                    <div class="uk-text-right">
+                        <h3 class="uk-text-primary uk-h2">
+							<?php echo number_format($prod->getPrice(), 2) ?><?php echo $prod->getCurrency() ?>
+                        </h3>
+                    </div>
+                    <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-button uk-button-primary">
+                        <span uk-icon="icon: cart;"></span> <?php _e('Buy', 'wppaytoolbox') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-		<?php foreach ($prod->getImages() as $img) { ?>
-			<p><img src="<?=WPPTB_BASE_URL?>/media/cache/product_medium/<?php echo $img->path?>"></p>
-		<?php } ?>
+    <div class="uk-card uk-margin">
+		<?php echo $prod->getDescription() ?>
+    </div>
 
-	</div>
-
-	<div class="wpptb-btn-container">
-
-		<a href="<?php echo $prod->getQuicksellUrl() ?>" class="wpptb-btn">
-			<?php _e('Buy', 'wppaytoolbox')?>
-		</a>
-	
-	</div>
 
 </div>

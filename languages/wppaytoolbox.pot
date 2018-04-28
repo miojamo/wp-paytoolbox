@@ -27,6 +27,9 @@ msgstr "Categories"
 msgid "Products"
 msgstr "Products"
 
+msgid "Add to cart"
+msgstr "Add to cart"
+
 #: templates/product.php:19
 msgid "Buy"
 msgstr "Buy"
