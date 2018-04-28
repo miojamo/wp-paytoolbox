@@ -25,6 +25,9 @@ class WpPaytoolbox{
 		add_shortcode("wpptb-shop", array($this, 'doListCategories'));
 
     	wp_enqueue_style( 'wpptb-style', plugins_url('style.css', __FILE__)  );
+    	wp_enqueue_style( 'uikit', plugins_url('node_modules/uikit/dist/css/uikit.css', __FILE__) );
+
+		wp_enqueue_script( 'script',  plugins_url('node_modules/uikit/dist/js/uikit.js', __FILE__) );
 
 		$this->login();
 

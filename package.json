@@ -1,0 +1,11 @@
+{
+  "name": "wp-paytoolbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/miojamo/wp-paytoolbox.git",
+  "author": "Simon <miojamo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "uikit": "^3.0.0-beta.42"
+  }
+}
