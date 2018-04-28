@@ -6,7 +6,7 @@
 	<h2><?php _e('Products', 'wppaytoolbox')?></h2>
 	
 	<?php foreach ($all_products as $prod) { ?>
-		
+
 		<div class="list-box">
 			
 			<div class="thumb">
@@ -16,9 +16,18 @@
 			</div>
 			
 			<div class="list-name">
-				<a href="?product=<?php echo $prod->getCode()?>">
-					<?php echo $prod->getName() ?>
-				</a>
+				<p>
+					<a href="?product=<?php echo $prod->getCode()?>">
+						<?php echo $prod->getName() ?>
+					</a>
+					<br>
+					<?php _e('Categories', 'wppaytoolbox')?>: <?php echo $prod->printCategories(" ") ?>
+					<br>
+					<?php echo $prod->getPrice()?> <?php echo $prod->getCurrency()?>
+					<br>
+					<?php echo $prod->getDescription()?>
+					
+				</p>
 			</div>
 			
 			<div style="clear: both"> </div>

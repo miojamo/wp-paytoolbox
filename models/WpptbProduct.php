@@ -10,6 +10,7 @@ class WpptbProduct{
 	private $description;
 	private $images = array();
 	private $quicksellUrl;
+    private $categories;
 
 
     /**
@@ -171,4 +172,32 @@ class WpptbProduct{
 
         return $this;
     }
+
+    /**
+     * @return array
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param array $categories
+     *
+     * @return self
+     */
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
+    public function printCategories($separator){
+        foreach ($this->getCategories() as $tmp_category) {
+            echo $tmp_category->getName();
+            echo $separator;
+        }
+    }
+
 }
