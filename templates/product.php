@@ -25,9 +25,11 @@
 							<?php echo number_format($prod->getPrice(), 2) ?><?php echo $prod->getCurrency() ?>
                         </h3>
                     </div>
+                    <p>SHORT DESCR</p>
                     <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-button uk-button-primary">
                         <span uk-icon="icon: cart;"></span> <?php _e('Buy', 'wppaytoolbox') ?>
                     </a>
+                    <div class="uk-margin uk-text-uppercase"><span uk-icon="icon: folder;"></span> CATEGORY</div>
                 </div>
             </div>
         </div>

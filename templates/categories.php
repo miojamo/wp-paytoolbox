@@ -20,6 +20,7 @@
 								<?php echo $cat->getName() ?>
                             </a>
                         </h2>
+                        <p>DESCR</p>
                     </div>
                 </div>
             </div>
