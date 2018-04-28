@@ -43,56 +43,26 @@ class WpPaytoolbox{
 
 		// This is used by function ..._get_category()
 		$api_product = $this->getDataFromEndpoint("/products/".$product . '?channel=' . $this->channel);
+// echo "<pre>";
+// var_dump($api_product);
+// echo "</pre>";
 
-		$Product = new WpptbProduct();
-
-		$price = "-";
-		$currency = "";
-		$thumb = "";
-
-		//if( isset($product['variants']->{$product['code']}->price)){
-		// Don't use isset() so we see if an error occured!
-			$price = $api_product['variants']->{$api_product['code']}->price->current;
-			$currency = $api_product['variants']->{$api_product['code']}->price->currency;
-		//}
-
-
-		if( ! empty($api_product['images'])){
-			$img1 = current($api_product['images']);
-			$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $img1->path;
-		}
-
-		$Product->setName($api_product['name']);
-		$Product->setCurrency($currency);
-		$Product->setPrice($price);
-		$Product->setThumb($thumb);
-		$Product->setDescription($api_product['description']);
-		$Product->setImages($api_product['images']);
-		$Product->setQuicksellUrl($api_product['quicksell']->checkout);
+		$Product = $this->mapApiResponseToProductModel($api_product);
 
 		$GLOBALS['wpptb-product'] = $Product;
 		$this->showPage('product');
 	}
 
+
 	private function printCategoryProducts($category){
 
 		$prods = $this->getDataFromEndpoint("/taxon-products/".$category . '?channel=' . $this->channel);
-// print_r($prods['items']);
 
 		$products = array();
 
 		foreach ($prods['items'] as $row) {
 
-			$first_img = current($row->images);
-			$thumb = "";
-			if( ! empty($first_img)){
-				$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $first_img->path; 
-			}
-
-			$Product = new WpptbProduct();
-			$Product->setName($row->name);
-			$Product->setCode($row->code);
-			$Product->setThumb($thumb);
+			$Product = $this->mapApiResponseToProductModel($row);
 
 			$products[] = $Product;
 
@@ -126,6 +96,58 @@ class WpPaytoolbox{
 		$GLOBALS['wpptb-all-categories'] = $categories; 
 		
 		$this->showPage('categories');
+
+	}
+
+	/**
+	* @param object/array $api_product Response from an API in array format
+	* 
+	* @return object WpptbProduct
+	**/
+	private function mapApiResponseToProductModel($api_product){
+
+		$api_product = (array) $api_product;
+
+		$Product = new WpptbProduct();// output variable
+
+		$price = "-";
+		$currency = "";
+		$thumb = "";
+
+		// Don't use isset() so we see if an error occured!
+
+
+		$price = $api_product['variants']->{$api_product['code']}->price->current;
+		$currency = $api_product['variants']->{$api_product['code']}->price->currency;
+		
+
+		if( ! empty($api_product['images'])){
+			$img1 = current($api_product['images']);
+			$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $img1->path;
+		}
+
+		$Product->setCode($api_product['code']);
+		$Product->setName($api_product['name']);
+		$Product->setCurrency($currency);
+		$Product->setPrice($price);
+		$Product->setThumb($thumb);
+		$Product->setDescription($api_product['description']);
+		$Product->setImages($api_product['images']);
+		$Product->setQuicksellUrl($api_product['quicksell']->checkout);
+
+		// Set categories
+		$product_categories = array();
+
+		$api_categories = $api_product['taxons']->others;
+		foreach ($api_categories as $value) {
+			$Category = new WpptbCategory();
+			$Category->setName($value);
+			$product_categories[] = $Category;
+		}
+
+		$Product->setCategories($product_categories);
+
+		return $Product;
 
 	}
 
