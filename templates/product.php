@@ -1,8 +1,8 @@
 <?php $prod = wppaytoolbox_get_product(); // var_dump($prod); ?>
 
-<div class="wpptb">
+<div class="wpptb uk-section">
 
-    <div class="uk-card">
+    <div class="uk-card uk-card-default uk-card-body uk-card-small">
         <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
             <div>
                 <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
@@ -25,6 +25,7 @@
 							<?php echo number_format($prod->getPrice(), 2) ?><?php echo $prod->getCurrency() ?>
                         </h3>
                     </div>
+                    <p><?php echo $prod->getShortDescription()?></p>
                     <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-button uk-button-primary">
                         <span uk-icon="icon: cart;"></span> <?php _e('Buy', 'wppaytoolbox') ?>
                     </a>
@@ -32,16 +33,15 @@
                         <span uk-icon="icon: folder;"></span>
                         <?php $prod->printCategories(" ")?>
                     </div>
-                    <p><?php echo $prod->getShortDescription()?></p>
-                    
                 </div>
             </div>
         </div>
+
+        <div class="uk-card">
+		    <?php echo $prod->getDescription() ?>
+        </div>
     </div>
 
-    <div class="uk-card uk-margin">
-		<?php echo $prod->getDescription() ?>
-    </div>
 
 
 </div>

@@ -15,7 +15,7 @@
 						<?php endif; ?>
                     </div>
                     <div class="uk-card-body">
-                        <h2 class="uk-card-title">
+                        <h2 class="uk-card-title uk-margin-remove-top">
                             <a href="?product=<?php echo $prod->getCode() ?>">
 								<?php echo $prod->getName() ?>
                             </a>

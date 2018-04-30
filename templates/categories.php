@@ -7,7 +7,7 @@
     <div class="uk-child-width-1-2@s uk-child-width-1-4@m uk-grid-match" uk-grid>
 		<?php foreach ($all_cats as $cat): ?>
             <div>
-                <div class="uk-card uk-card-default">
+                <div class="uk-card uk-card-default uk-card-body">
                     <div class="uk-card-media-top uk-text-center">
 						<?php if (!empty($cat->getThumb())): ?>
                             <img src="<?php echo $cat->getThumb() ?>"/>
@@ -20,7 +20,6 @@
 								<?php echo $cat->getName() ?>
                             </a>
                         </h2>
-                        <p>DESCR</p>
                     </div>
                 </div>
             </div>
