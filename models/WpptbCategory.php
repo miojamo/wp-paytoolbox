@@ -6,64 +6,34 @@ class WpptbCategory{
 	private $code;
 	private $thumb;
 	
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
+    public function getName(){
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
+    public function setName($name){
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCode()
-    {
+    public function getCode(){
         return $this->code;
     }
 
-    /**
-     * @param mixed $code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
+    public function setCode($code){
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getThumb()
-    {
+    public function getThumb(){
         return $this->thumb;
     }
 
-    /**
-     * @param mixed $thumb
-     *
-     * @return self
-     */
-    public function setThumb($thumb)
-    {
+    public function setThumb($thumb){
         $this->thumb = $thumb;
 
         return $this;
     }
+
 }

@@ -7,187 +7,106 @@ class WpptbProduct{
 	private $price;
 	private $currency;
 	private $thumb;
+    private $shortDescription;
 	private $description;
 	private $images = array();
 	private $quicksellUrl;
     private $categories;
 
 
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
+    public function getName(){
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
+    public function setName($name){
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCode()
-    {
+    public function getCode(){
         return $this->code;
     }
 
-    /**
-     * @param mixed $code
-     *
-     * @return self
-     */
-    public function setCode($code)
-    {
+    public function setCode($code){
         $this->code = $code;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getPrice()
-    {
+    public function getPrice(){
         return $this->price;
     }
 
-    /**
-     * @param mixed $price
-     *
-     * @return self
-     */
-    public function setPrice($price)
-    {
+    public function setPrice($price){
         $this->price = $price;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getCurrency()
-    {
+    public function getCurrency(){
         return $this->currency;
     }
 
-    /**
-     * @param mixed $currency
-     *
-     * @return self
-     */
-    public function setCurrency($currency)
-    {
+    public function setCurrency($currency){
         $this->currency = $currency;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getThumb()
-    {
+    public function getThumb(){
         return $this->thumb;
     }
 
-    /**
-     * @param mixed $thumb
-     *
-     * @return self
-     */
-    public function setThumb($thumb)
-    {
+    public function setThumb($thumb){
         $this->thumb = $thumb;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
+    public function getDescription(){
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
+    public function setDescription($description){
         $this->description = $description;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getImages()
-    {
+    public function getShortDescription(){
+        return $this->shortDescription;
+    }
+    public function setShortDescription($shortDescription){
+        $this->shortDescription = $shortDescription;
+        return $this;
+    }
+
+    public function getImages(){
         return $this->images;
     }
 
-    /**
-     * @param mixed $images
-     *
-     * @return self
-     */
-    public function setImages($images)
-    {
+    public function setImages($images){
         $this->images = $images;
 
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getQuicksellUrl()
-    {
+    public function getQuicksellUrl(){
         return $this->quicksellUrl;
     }
 
-    /**
-     * @param mixed $quicksellUrl
-     *
-     * @return self
-     */
-    public function setQuicksellUrl($quicksellUrl)
-    {
+    public function setQuicksellUrl($quicksellUrl){
         $this->quicksellUrl = $quicksellUrl;
 
         return $this;
     }
 
-    /**
-     * @return array
-     */
-    public function getCategories()
-    {
+    public function getCategories(){
         return $this->categories;
     }
 
-    /**
-     * @param array $categories
-     *
-     * @return self
-     */
-    public function setCategories($categories)
-    {
+    public function setCategories($categories){
         $this->categories = $categories;
 
         return $this;

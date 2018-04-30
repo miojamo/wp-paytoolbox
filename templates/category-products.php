@@ -21,8 +21,13 @@
                             </a>
                         </h2>
                         <div class="uk-clearfix">
-                            <span class="uk-text-large uk-text-primary uk-float-left"><?php echo $prod->getPrice() ?> <?php echo $prod->getCurrency() ?></span>
-                            <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-text-uppercase uk-float-right"><span uk-icon="icon: cart; ratio: 0.8"></span> <?php _e('Add to cart', 'wppaytoolbox') ?></a>
+                            <span class="uk-text-large uk-text-primary uk-float-left"><?php echo $prod->getPrice() ?>
+                                <?php echo $prod->getCurrency() ?>
+                            </span>
+                            <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-text-uppercase uk-float-right">
+                                <span uk-icon="icon: cart; ratio: 0.8"></span>
+                                <?php _e('Add to cart', 'wppaytoolbox') ?>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -136,6 +136,7 @@ class WpPaytoolbox{
 		$Product->setPrice($price);
 		$Product->setThumb($thumb);
 		$Product->setDescription($api_product['description']);
+		$Product->setShortDescription($api_product['shortDescription']);
 		$Product->setImages($api_product['images']);
 		$Product->setQuicksellUrl($api_product['quicksell']->checkout);
 
