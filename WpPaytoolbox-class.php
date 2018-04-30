@@ -197,11 +197,19 @@ class WpPaytoolbox{
 		$headers = [
 			'Authorization' => 'Bearer ' . $token
 		];
-		$response = $this->client->request($method, $this->apiUrl . $endpoint, [
-		//	'body' =>  implode("&", $params)
-//			'json' => []
-			'form_params' => $params,
-		]);
+
+		$json_resp = array();
+		try{
+			$response = $this->client->request($method, $this->apiUrl . $endpoint, [
+			//	'body' =>  implode("&", $params)
+	//			'json' => []
+				'form_params' => $params,
+			]);
+		} catch(Exception $e){
+			error_log( $e->getTraceAsString() );
+			echo '<meta http-equiv="refresh" content="0;url=/?p=404" />';
+			return $json_resp;
+		}
 
 		$json_resp = $response->getBody()->getContents();
 
