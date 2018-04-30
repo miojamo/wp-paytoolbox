@@ -87,6 +87,9 @@ class WpPaytoolbox{
 		$categories = array();
 
 		foreach ($api_categories as $row) {
+
+			if($row->code=='category'){ continue; }
+
 			$Category = new WpptbCategory();
 			$Category->setName($row->name);
 			$Category->setCode($row->code);
