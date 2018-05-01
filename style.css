@@ -1,5 +1,6 @@
-.uk-card .uk-card-title {
-	font-size: 2rem
+
+.wpptb-price {
+	font-size: 16px;
 }
 
 .uk-card-default {
@@ -7,3 +8,52 @@
 	border-radius: 5px;
 }
 
+
+.btn, .uk-button {
+	margin: 0;
+	border: none;
+	border-radius: 0;
+	overflow: visible;
+	color: inherit;
+	text-transform: none;
+	display: inline-block;
+	box-sizing: border-box;
+	padding: 0 20px;
+	vertical-align: middle;
+	line-height: 38px;
+	text-align: center;
+	text-decoration: none;
+	transition: .25s ease-in-out;
+	letter-spacing: .35px;
+	background-origin: border-box;
+	background-size: calc(200% + 1px);
+	background-position-x: calc(100% + 1px);
+}
+
+.btn, .uk-button-default {
+	background-color: transparent;
+	color: #111;
+	border: 1px solid #111;
+	background-image: linear-gradient(90deg,#111 50%,transparent 50%);
+}
+
+
+.btn-success, .uk-button-secondary {
+	background-color: #111;
+	color: #fff;
+	border: 1px solid transparent;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	background-image: linear-gradient(90deg,#111 0,#303030 50%,#111 100%);
+	box-shadow: 1px 3px 15px rgba(17,17,17,.15);
+}
+
+.btn-success:focus, .btn-success:hover, .btn-success:visited, .uk-button-secondary:focus,.uk-button-secondary:visited, .uk-button-secondary:hover {
+	background-color: #252525;
+	color: rgba(255,255,255,.85);
+	border-color: transparent;
+	background-image: linear-gradient(90deg,#111 0,#303030 50%,#111 100%);
+	box-shadow: 3px 5px 25px rgba(17,17,17,.18);
+}

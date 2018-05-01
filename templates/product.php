@@ -2,7 +2,7 @@
 
 <div class="wpptb uk-section">
 
-    <div class="uk-card uk-card-default uk-card-body uk-card-small">
+    <div class="uk-card uk-card-default uk-card-body">
         <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
             <div>
                 <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
@@ -21,23 +21,22 @@
                     <h2 class="uk-margin-remove-top"><?php echo $prod->getName() ?></h2>
                     <hr/>
                     <div class="uk-text-right">
-                        <h3 class="uk-text-primary uk-h2">
-							<?php echo number_format($prod->getPrice(), 2) ?><?php echo $prod->getCurrency() ?>
+                        <h3 class="uk-text-primary uk-h3">
+							<?php echo number_format($prod->getPrice(), 2) ?> <?php echo $prod->getCurrency() ?>
                         </h3>
                     </div>
                     <p><?php echo $prod->getShortDescription()?></p>
-                    <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-button uk-button-primary">
+                    <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-button uk-button-secondary">
                         <span uk-icon="icon: cart;"></span> <?php _e('Buy', 'wppaytoolbox') ?>
                     </a>
-                    <div class="uk-margin uk-text-uppercase">
+                    <div class="uk-margin uk-text-uppercase uk-text-right">
                         <span uk-icon="icon: folder;"></span>
                         <?php $prod->printCategories(" ")?>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="uk-card">
+        <div class="uk-card uk-margin-top">
 		    <?php echo $prod->getDescription() ?>
         </div>
     </div>

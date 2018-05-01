@@ -1,6 +1,6 @@
 # Wordpress Paytoolbox plugin
 
-Wordpress plugin to list categories and products from Paytoolbox to your Wordpress site.
+Wordpress plugin to list categories and products from Paytoolbox ecommerce to your Wordpress site. 
 
 ## Requirements
 
@@ -28,6 +28,3 @@ Wordpress plugin to list categories and products from Paytoolbox to your Wordpre
 
 1. Replace all CSS through your theme CSS files - not by editing default plugin files 
 
-## Show thumbnail in the list of categories
-
-In order to show thumbnail in the list of categories, you need to login to the Paytoolbox admin, edit category/taxons by adding an image.
