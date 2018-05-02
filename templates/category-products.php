@@ -21,7 +21,8 @@
                             </a>
                         </h2>
                         <div class="uk-clearfix">
-                            <span class="wpptb-price uk-text-primary uk-float-left"><?php echo $prod->getPrice() ?>
+                            <span class="wpptb-price uk-text-primary uk-float-left">
+                            	<?php echo number_format($prod->getPrice(), 2) ?>
                                 <?php echo $prod->getCurrency() ?>
                             </span>
                             <a href="<?php echo $prod->getQuicksellUrl() ?>" class="uk-text-uppercase uk-float-right">
