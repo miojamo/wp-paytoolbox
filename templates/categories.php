@@ -11,7 +11,7 @@
                     <div class="uk-card-media-top uk-text-center">
 						<?php if (!empty($cat->getThumb())): ?>
                             <img src="<?php echo $cat->getThumb() ?>"/>
-                            <a href="?product=<?php echo $cat->getCode() ?>" class="uk-position-cover"></a>
+                            <a href="?category=<?php echo $cat->getCode() ?>" class="uk-position-cover"></a>
 						<?php endif; ?>
                     </div>
                     <div class="uk-card-body uk-text-center">
