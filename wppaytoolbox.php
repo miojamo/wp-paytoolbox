@@ -8,7 +8,7 @@
    Text Domain: wppaytoolbox
    Domain Path: /languages
   */
-session_start();
+
 include 'WpPaytoolbox-class.php';
 include 'models/WpptbProduct.php';
 include 'models/WpptbCategory.php';
@@ -36,4 +36,12 @@ function wppaytoolbox_get_product(){
 	return $GLOBALS['wpptb-product'];
 }
 
+function wpptb_start_session() {
+    if(!session_id()) {
+        session_start();
+    }
+}
+
 add_action('plugins_loaded','wppaytoolbox_init');
+
+add_action('init', 'wpptb_start_session', 1);
