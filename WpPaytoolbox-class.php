@@ -126,6 +126,9 @@ class WpPaytoolbox{
 
 
 		$price = $api_product['variants']->{$api_product['code']}->price->current;
+
+		$price = $price / 100;
+
 		$currency = $api_product['variants']->{$api_product['code']}->price->currency;
 		
 
