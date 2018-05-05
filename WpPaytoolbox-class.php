@@ -134,7 +134,7 @@ class WpPaytoolbox{
 
 		if( ! empty($api_product['images'])){
 			$img1 = current($api_product['images']);
-			$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $img1->path;
+			$thumb = $img1->absolutePaths->sylius_shop_product_small_thumbnail;
 		}
 
 		$Product->setCode($api_product['code']);
@@ -181,7 +181,7 @@ class WpPaytoolbox{
 			$thumb = '';
 			if(count($row->images) > 0){
 				$thumb = current($row->images);
-				$thumb = WPPTB_BASE_URL . '/media/cache/sylius_small/' . $thumb->path;
+				$thumb = $thumb->absolutePaths->sylius_shop_product_small_thumbnail;
 			}
 			$row->thumb = $thumb;
 			$out[] = $row;
