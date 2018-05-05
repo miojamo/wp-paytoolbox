@@ -199,6 +199,8 @@ class WpPaytoolbox{
 
 	private function getDataFromEndpoint($endpoint, $method = 'GET', $params = []){
 
+		$this->startNativePhpSession();
+
 		$token = $_SESSION['wpptb-token'];
 
 		$headers = [
@@ -229,6 +231,8 @@ class WpPaytoolbox{
 	}
 
 	private function login(){
+
+		$this->startNativePhpSession();
 		
 		if(! isset($_SESSION['wpptb-token']) || empty($_SESSION['wpptb-token']) ){
 
@@ -239,6 +243,12 @@ class WpPaytoolbox{
 			$_SESSION['wpptb-token'] = $resp['token'];
 
 		} 
+	}
+
+	private function startNativePhpSession(){
+		if(!session_id()) {
+			session_start();
+		}
 	}
 
 }
