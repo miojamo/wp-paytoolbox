@@ -134,7 +134,7 @@ class WpPaytoolbox{
 
 		if( ! empty($api_product['images'])){
 			$img1 = current($api_product['images']);
-			$thumb = $img1->absolutePaths->sylius_shop_product_thumbnail;
+			$thumb = $img1->absolutePaths->sylius_shop_product_large_thumbnail;
 		}
 
 		$Product->setCode($api_product['code']);
