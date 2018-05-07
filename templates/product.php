@@ -5,7 +5,7 @@
     <div class="uk-card uk-card-default uk-card-body">
         <div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
             <div>
-                <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
+                <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true">
                     <ul class="uk-slideshow-items">
 						<?php foreach ($prod->getImages() as $img): ?>
                             <li><img src="<?= WPPTB_BASE_URL ?>/media/cache/product_medium/<?php echo $img->path ?>" uk-cover></li>
