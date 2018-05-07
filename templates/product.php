@@ -7,9 +7,11 @@
             <div>
                 <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow="autoplay: true">
                     <ul class="uk-slideshow-items">
-						<?php foreach ($prod->getImages() as $img): ?>
-                            <li><img src="<?= WPPTB_BASE_URL ?>/media/cache/product_medium/<?php echo $img->path ?>" uk-cover></li>
-						<?php endforeach; ?>
+						<?php foreach ($prod->getImages() as $img){ ?>
+                            <li>
+                                <img src="<?php echo $img->absolutePaths->sylius_shop_product_large_thumbnail?>" uk-cover>
+                            </li>
+						<?php } ?>
                         <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
                         <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
 

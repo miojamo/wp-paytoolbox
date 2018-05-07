@@ -134,7 +134,7 @@ class WpPaytoolbox{
 
 		if( ! empty($api_product['images'])){
 			$img1 = current($api_product['images']);
-			$thumb = WPPTB_BASE_URL . '/media/cache/product_medium/' . $img1->path;
+			$thumb = $img1->absolutePaths->sylius_shop_product_small_thumbnail;
 		}
 
 		$Product->setCode($api_product['code']);
@@ -181,7 +181,7 @@ class WpPaytoolbox{
 			$thumb = '';
 			if(count($row->images) > 0){
 				$thumb = current($row->images);
-				$thumb = WPPTB_BASE_URL . '/media/cache/sylius_small/' . $thumb->path;
+				$thumb = $thumb->absolutePaths->sylius_shop_product_small_thumbnail;
 			}
 			$row->thumb = $thumb;
 			$out[] = $row;
@@ -198,6 +198,8 @@ class WpPaytoolbox{
 
 
 	private function getDataFromEndpoint($endpoint, $method = 'GET', $params = []){
+
+		$this->startNativePhpSession();
 
 		$token = $_SESSION['wpptb-token'];
 
@@ -229,6 +231,8 @@ class WpPaytoolbox{
 	}
 
 	private function login(){
+
+		$this->startNativePhpSession();
 		
 		if(! isset($_SESSION['wpptb-token']) || empty($_SESSION['wpptb-token']) ){
 
@@ -239,6 +243,12 @@ class WpPaytoolbox{
 			$_SESSION['wpptb-token'] = $resp['token'];
 
 		} 
+	}
+
+	private function startNativePhpSession(){
+		if(!session_id()) {
+			session_start();
+		}
 	}
 
 }

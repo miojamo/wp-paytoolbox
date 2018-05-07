@@ -5,7 +5,7 @@
     <h2><?php _e('Categories', 'wppaytoolbox') ?></h2>
 
     <div class="uk-child-width-1-2@s uk-child-width-1-4@m uk-grid-match" uk-grid>
-		<?php foreach ($all_cats as $cat): ?>
+		<?php foreach ($all_cats as $cat){ ?>
             <div>
                 <div class="uk-card uk-card-default uk-card-body">
                     <div class="uk-card-media-top uk-text-center">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-		<?php endforeach; ?>
+		<?php } ?>
     </div>
 
 </div>
